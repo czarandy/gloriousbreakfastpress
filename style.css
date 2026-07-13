@@ -145,15 +145,6 @@ nav a:hover {
   background: var(--marmalade);
   color: var(--paper);
 }
-.btn-ghost {
-  border: 1.5px solid var(--rule);
-  color: var(--ink);
-}
-.btn-ghost:hover {
-  border-color: var(--marmalade);
-  color: var(--marmalade);
-}
-
 /* ---------- section scaffolding ---------- */
 section {
   padding: 72px 0;
@@ -217,9 +208,12 @@ section h2 {
   line-height: 1.2;
 }
 .cover .cover-author {
-  font-size: 0.8rem;
-  opacity: 0.9;
-  margin-top: 8px;
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  opacity: 0.95;
 }
 .c-yolk {
   background: linear-gradient(160deg, #f0b03a, var(--yolk) 55%, #c9821a);
@@ -312,95 +306,6 @@ section h2 {
 }
 .fact-card dd {
   color: var(--ink-soft);
-}
-
-/* ---------- submissions ---------- */
-.sub-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--paper-deep);
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  padding: 6px 16px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-.sub-status .dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--leaf);
-}
-.sub-list {
-  margin: 20px 0 24px;
-  padding-left: 0;
-  list-style: none;
-  max-width: 42em;
-}
-.sub-list li {
-  padding: 10px 0 10px 30px;
-  position: relative;
-  color: var(--ink-soft);
-  border-bottom: 1px dashed var(--rule);
-}
-.sub-list li::before {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 18px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50% 50% 3px 3px;
-  background: var(--yolk);
-}
-
-/* ---------- newsletter ---------- */
-.newsletter {
-  text-align: center;
-  background: var(--paper-deep);
-}
-.newsletter h2 {
-  margin-top: 6px;
-}
-.newsletter form {
-  margin-top: 28px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-.newsletter input[type='email'] {
-  font: inherit;
-  padding: 12px 18px;
-  border: 1.5px solid var(--rule);
-  border-radius: 999px;
-  background: var(--paper);
-  color: var(--ink);
-  min-width: 280px;
-}
-.newsletter input[type='email']:focus {
-  outline: 2px solid var(--yolk);
-  border-color: var(--yolk);
-}
-.newsletter button {
-  font: inherit;
-  font-weight: 600;
-  padding: 12px 26px;
-  border: none;
-  border-radius: 999px;
-  background: var(--ink);
-  color: var(--paper);
-  cursor: pointer;
-}
-.newsletter button:hover {
-  background: var(--marmalade);
-}
-.newsletter .fine {
-  font-size: 0.82rem;
-  color: var(--ink-soft);
-  margin-top: 14px;
 }
 
 /* ---------- footer ---------- */
