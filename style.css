@@ -195,25 +195,19 @@ section h2 {
     2px 3px 0 rgba(46, 36, 24, 0.18),
     6px 10px 24px rgba(46, 36, 24, 0.18);
 }
-.cover .press-mark {
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  opacity: 0.85;
-}
 .cover .cover-title {
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: 1.2;
+  font-family: 'Marcellus SC', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.25;
 }
 .cover .cover-author {
-  font-family: 'Fraunces', Georgia, serif;
-  font-size: 1.15rem;
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  font-size: 1.05rem;
   font-weight: 500;
-  letter-spacing: 0.14em;
   text-transform: uppercase;
   opacity: 0.95;
+  text-align: center;
 }
 .c-yolk {
   background: linear-gradient(160deg, #f0b03a, var(--yolk) 55%, #c9821a);
