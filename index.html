@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glorious Breakfast Press — a pico press</title>
+<meta name="description" content="Glorious Breakfast Press is a pico press publishing small, nourishing books in tiny handmade editions. Best served in the morning.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍳</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #faf4e8;
+    --paper-deep: #f3e9d5;
+    --ink: #2e2418;
+    --ink-soft: #6b5d4a;
+    --yolk: #e8a020;
+    --marmalade: #d4622a;
+    --jam: #a53a4e;
+    --leaf: #5a6e46;
+    --sky: #4a6f8a;
+    --rule: #d9cbb0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "Inter", -apple-system, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  h1, h2, h3, .serif {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  a { color: var(--marmalade); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:hover { color: var(--jam); }
+
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ---------- header ---------- */
+  header {
+    border-bottom: 1px solid var(--rule);
+    background: var(--paper);
+  }
+  .masthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    padding: 22px 0;
+  }
+  .wordmark {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .wordmark .egg { color: var(--yolk); }
+  nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    margin-left: 22px;
+  }
+  nav a:hover { color: var(--marmalade); }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: 84px 0 72px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse 60% 50% at 50% 0%, var(--paper-deep), transparent);
+  }
+  .hero .plate {
+    font-size: 3rem;
+    margin-bottom: 18px;
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+  .hero h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--marmalade);
+  }
+  .hero p.tagline {
+    max-width: 34em;
+    margin: 22px auto 0;
+    font-size: 1.15rem;
+    color: var(--ink-soft);
+  }
+  .hero .actions { margin-top: 34px; }
+  .btn {
+    display: inline-block;
+    padding: 12px 26px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin: 0 6px 10px;
+  }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: var(--marmalade); color: var(--paper); }
+  .btn-ghost { border: 1.5px solid var(--rule); color: var(--ink); }
+  .btn-ghost:hover { border-color: var(--marmalade); color: var(--marmalade); }
+
+  /* ---------- section scaffolding ---------- */
+  section { padding: 72px 0; }
+  section + section { border-top: 1px solid var(--rule); }
+  .kicker {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--marmalade);
+    margin-bottom: 10px;
+  }
+  section h2 { font-size: 2rem; margin-bottom: 14px; }
+  .lede { color: var(--ink-soft); max-width: 40em; }
+
+  /* ---------- books ---------- */
+  .shelf {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 36px 28px;
+  }
+  .book { text-decoration: none; color: inherit; display: block; }
+  .cover {
+    aspect-ratio: 2 / 3;
+    border-radius: 3px 8px 8px 3px;
+    padding: 18px 16px 16px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--paper);
+    box-shadow:
+      inset 6px 0 8px -6px rgba(0,0,0,.45),
+      2px 3px 0 rgba(46,36,24,.18),
+      6px 10px 24px rgba(46,36,24,.18);
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .book:hover .cover {
+    transform: translateY(-6px) rotate(-1deg);
+    box-shadow:
+      inset 6px 0 8px -6px rgba(0,0,0,.45),
+      2px 3px 0 rgba(46,36,24,.18),
+      10px 18px 32px rgba(46,36,24,.24);
+  }
+  .cover .press-mark { font-size: 0.68rem; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+  .cover .cover-title {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .cover .cover-author { font-size: 0.8rem; opacity: .9; margin-top: 8px; }
+  .c-yolk { background: linear-gradient(160deg, #f0b03a, var(--yolk) 55%, #c9821a); }
+  .c-jam { background: linear-gradient(160deg, #b94f62, var(--jam) 55%, #7e2a3a); }
+  .c-leaf { background: linear-gradient(160deg, #6d8257, var(--leaf) 55%, #42532f); }
+  .c-sky { background: linear-gradient(160deg, #5d84a0, var(--sky) 55%, #345268); }
+  .c-marm { background: linear-gradient(160deg, #e07a42, var(--marmalade) 55%, #a8481c); }
+  .c-ink { background: linear-gradient(160deg, #4a3d2c, var(--ink) 55%, #1a140c); }
+  .book-meta { margin-top: 14px; }
+  .book-meta .t { font-weight: 600; font-size: 0.98rem; }
+  .book-meta .d { font-size: 0.86rem; color: var(--ink-soft); margin-top: 3px; }
+
+  /* ---------- about ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-top: 8px;
+  }
+  .about-grid p + p { margin-top: 16px; }
+  .fact-card {
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 26px 28px;
+  }
+  .fact-card h3 { font-size: 1.05rem; margin-bottom: 14px; }
+  .fact-card dl { font-size: 0.9rem; }
+  .fact-card dt { font-weight: 600; margin-top: 12px; }
+  .fact-card dt:first-child { margin-top: 0; }
+  .fact-card dd { color: var(--ink-soft); }
+
+  /* ---------- submissions ---------- */
+  .sub-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .sub-status .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: var(--leaf);
+  }
+  .sub-list { margin: 20px 0 24px; padding-left: 0; list-style: none; max-width: 42em; }
+  .sub-list li {
+    padding: 10px 0 10px 30px;
+    position: relative;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed var(--rule);
+  }
+  .sub-list li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50% 50% 3px 3px;
+    background: var(--yolk);
+  }
+
+  /* ---------- newsletter ---------- */
+  .newsletter { text-align: center; background: var(--paper-deep); }
+  .newsletter h2 { margin-top: 6px; }
+  .newsletter form {
+    margin-top: 28px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .newsletter input[type="email"] {
+    font: inherit;
+    padding: 12px 18px;
+    border: 1.5px solid var(--rule);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ink);
+    min-width: 280px;
+  }
+  .newsletter input[type="email"]:focus { outline: 2px solid var(--yolk); border-color: var(--yolk); }
+  .newsletter button {
+    font: inherit; font-weight: 600;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+  }
+  .newsletter button:hover { background: var(--marmalade); }
+  .newsletter .fine { font-size: 0.82rem; color: var(--ink-soft); margin-top: 14px; }
+
+  /* ---------- footer ---------- */
+  footer {
+    border-top: 1px solid var(--rule);
+    padding: 40px 0 48px;
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+  }
+  .foot-grid {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px 32px;
+  }
+  footer a { color: var(--ink-soft); }
+  footer a:hover { color: var(--marmalade); }
+
+  @media (max-width: 720px) {
+    .about-grid { grid-template-columns: 1fr; }
+    section { padding: 56px 0; }
+    .hero { padding: 60px 0 52px; }
+    nav a { margin-left: 0; margin-right: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap masthead">
+    <a class="wordmark" href="#">Glorious Breakfast Press <span class="egg">●</span></a>
+    <nav>
+      <a href="#books">Books</a>
+      <a href="#about">About</a>
+      <a href="#submissions">Submissions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="plate" aria-hidden="true">
+        <svg width="72" height="72" viewBox="0 0 72 72">
+          <path fill="#fdfaf2" stroke="#e9dfc8" stroke-width="1.5" d="M36 6c9 0 13 5 19 8s11 6 11 15c0 7-4 9-4 15s2 8-3 13-10 3-16 5-4 4-12 4-9-4-14-6-11-3-13-10 2-9 2-14-3-8 0-14 8-5 12-9 9-7 18-7z"/>
+          <circle cx="35" cy="36" r="12" fill="var(--yolk)"/>
+          <circle cx="31" cy="32" r="4" fill="#f6c96a"/>
+        </svg>
+      </div>
+      <h1>Small books,<br><em>sunny side up.</em></h1>
+      <p class="tagline">Glorious Breakfast Press is a pico press publishing tiny, nourishing editions of poetry, prose, and other things best read before noon.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#books">Browse the books</a>
+        <a class="btn btn-ghost" href="#submissions">Send us your work</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="books">
+    <div class="wrap">
+      <p class="kicker">The Catalog</p>
+      <h2>Fresh from the griddle</h2>
+      <p class="lede">Every title is a small-batch edition — short enough to finish with your coffee, made with more care than is strictly reasonable.</p>
+
+      <div class="shelf">
+        <a class="book" href="#">
+          <div class="cover c-yolk">
+            <span class="press-mark">GBP · No. 1</span>
+            <div>
+              <div class="cover-title">Marmalade Days</div>
+              <div class="cover-author">A. Toastworthy</div>
+            </div>
+          </div>
+          <div class="book-meta">
+            <div class="t">Marmalade Days</div>
+            <div class="d">Poems · 32 pages · hand-sewn</div>
+          </div>
+        </a>
+
+        <a class="book" href="#">
+          <div class="cover c-jam">
+            <span class="press-mark">GBP · No. 2</span>
+            <div>
+              <div class="cover-title">The Soft-Boiled Hours</div>
+              <div class="cover-author">June Rye</div>
+            </div>
+          </div>
+          <div class="book-meta">
+            <div class="t">The Soft-Boiled Hours</div>
+            <div class="d">Essays · 48 pages · saddle-stitched</div>
+          </div>
+        </a>
+
+        <a class="book" href="#">
+          <div class="cover c-leaf">
+            <span class="press-mark">GBP · No. 3</span>
+            <div>
+              <div class="cover-title">Field Notes on Toast</div>
+              <div class="cover-author">Basil Crumb</div>
+            </div>
+          </div>
+          <div class="book-meta">
+            <div class="t">Field Notes on Toast</div>
+            <div class="d">Micro-essays · 24 pages · zine</div>
+          </div>
+        </a>
+
+        <a class="book" href="#">
+          <div class="cover c-sky">
+            <span class="press-mark">GBP · No. 4</span>
+            <div>
+              <div class="cover-title">Before the Kettle Sings</div>
+              <div class="cover-author">M. Percolata</div>
+            </div>
+          </div>
+          <div class="book-meta">
+            <div class="t">Before the Kettle Sings</div>
+            <div class="d">Stories · 56 pages · forthcoming</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <p class="kicker">About the Press</p>
+      <h2>What is a pico press?</h2>
+      <div class="about-grid">
+        <div>
+          <p>Smaller than a small press. Smaller than a micro press. A <em>pico</em> press makes books the way you make breakfast for someone you love: in small quantities, at odd hours, with an unreasonable amount of attention to detail.</p>
+          <p>We publish a handful of titles a year in tiny editions — chapbooks, zines, and pamphlets that are printed, folded, and sewn by hand. When an edition is gone, it's gone, like the last piece of bacon.</p>
+          <p>Glorious Breakfast Press believes that a book doesn't have to be long to stay with you, and that the best reading happens in the quiet part of the morning, before the day gets its hands on you.</p>
+        </div>
+        <aside class="fact-card">
+          <h3>Press facts</h3>
+          <dl>
+            <dt>Founded</dt>
+            <dd>2026, over pancakes</dd>
+            <dt>Edition sizes</dt>
+            <dd>25–100 copies, numbered</dd>
+            <dt>Formats</dt>
+            <dd>Chapbooks, zines, broadsides</dd>
+            <dt>Best enjoyed</dt>
+            <dd>Between 6 and 11 a.m.</dd>
+          </dl>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="submissions">
+    <div class="wrap">
+      <p class="kicker">Submissions</p>
+      <h2>Send us something delicious</h2>
+      <div class="sub-status"><span class="dot"></span> Open for submissions</div>
+      <p class="lede">We read year-round, slowly, usually with jam on our fingers. We're looking for short work with a strong voice — the literary equivalent of a perfect egg.</p>
+      <ul class="sub-list">
+        <li>Poetry chapbooks: 12–32 pages</li>
+        <li>Prose &amp; essay pamphlets: up to 6,000 words</li>
+        <li>Zines, hybrid, and unclassifiable things: pitch us</li>
+        <li>No fees, ever. Contributors get copies and our undying gratitude.</li>
+      </ul>
+      <a class="btn btn-primary" href="mailto:submissions@gloriousbreakfastpress.com">submissions@gloriousbreakfastpress.com</a>
+    </div>
+  </section>
+
+  <section class="newsletter" id="contact">
+    <div class="wrap">
+      <p class="kicker">Stay in touch</p>
+      <h2>The Morning Edition</h2>
+      <p class="lede" style="margin: 0 auto;">An occasional newsletter about new titles, open reading periods, and breakfast. No spam — we only send it when there's actually news.</p>
+      <form action="#" method="post" onsubmit="alert('Newsletter signup coming soon — email us instead!'); return false;">
+        <input type="email" name="email" placeholder="you@example.com" aria-label="Email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <p class="fine">Or write to us the old-fashioned way: <a href="mailto:hello@gloriousbreakfastpress.com">hello@gloriousbreakfastpress.com</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-grid">
+    <div>© 2026 Glorious Breakfast Press. All rights reserved, all toast buttered.</div>
+    <div>
+      <a href="mailto:hello@gloriousbreakfastpress.com">Email</a> ·
+      <a href="#" rel="me">Instagram</a> ·
+      <a href="#" rel="me">Bluesky</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
