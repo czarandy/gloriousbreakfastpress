@@ -34,8 +34,7 @@ body {
 
 h1,
 h2,
-h3,
-.serif {
+h3 {
   font-family: 'Fraunces', Georgia, serif;
   font-weight: 600;
   line-height: 1.15;
@@ -125,9 +124,6 @@ nav a:hover {
   font-size: 1.15rem;
   color: var(--ink-soft);
 }
-.hero .actions {
-  margin-top: 34px;
-}
 .btn {
   display: inline-block;
   padding: 12px 26px;
@@ -151,14 +147,6 @@ section {
 }
 section + section {
   border-top: 1px solid var(--rule);
-}
-.kicker {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--marmalade);
-  margin-bottom: 10px;
 }
 section h2 {
   font-size: 2rem;
@@ -241,31 +229,8 @@ section h2 {
   font-size: 1.05rem;
   margin: 6px 0 18px;
 }
-.feature-specs {
-  list-style: none;
-  padding: 0;
-  margin: 24px 0 28px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.feature-specs li {
-  background: var(--paper-deep);
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  padding: 4px 14px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--ink-soft);
-}
 .feature-info .btn {
   margin-left: 0;
-}
-.btn-soon {
-  background: var(--paper-deep);
-  border: 1.5px dashed var(--rule);
-  color: var(--ink-soft);
-  cursor: default;
 }
 .edition-note {
   font-size: 0.84rem;
