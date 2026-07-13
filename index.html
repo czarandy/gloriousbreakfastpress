@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Glorious Breakfast Press — a pico press</title>
 <meta name="description" content="Glorious Breakfast Press is a pico press publishing small, nourishing books in tiny handmade editions. Best served in the morning.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍳</text></svg>">
+<link rel="icon" type="image/png" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
   <div class="wrap masthead">
     <a class="wordmark" href="#">Glorious Breakfast Press <span class="egg">●</span></a>
     <nav>
-      <a href="#books">Books</a>
+      <a href="#books">The Book</a>
       <a href="#about">About</a>
       <a href="#submissions">Submissions</a>
       <a href="#contact">Contact</a>
@@ -29,17 +29,13 @@
 
   <div class="hero">
     <div class="wrap">
-      <div class="plate" aria-hidden="true">
-        <svg width="72" height="72" viewBox="0 0 72 72">
-          <path fill="#fdfaf2" stroke="#e9dfc8" stroke-width="1.5" d="M36 6c9 0 13 5 19 8s11 6 11 15c0 7-4 9-4 15s2 8-3 13-10 3-16 5-4 4-12 4-9-4-14-6-11-3-13-10 2-9 2-14-3-8 0-14 8-5 12-9 9-7 18-7z"/>
-          <circle cx="35" cy="36" r="12" fill="var(--yolk)"/>
-          <circle cx="31" cy="32" r="4" fill="#f6c96a"/>
-        </svg>
+      <div class="plate">
+        <img src="logo.png" alt="A stack of books drawn as pancakes, topped with butter and dripping syrup" width="180" height="149">
       </div>
       <h1>Small books,<br><em>sunny side up.</em></h1>
       <p class="tagline">Glorious Breakfast Press is a pico press publishing tiny, nourishing editions of poetry, prose, and other things best read before noon.</p>
       <div class="actions">
-        <a class="btn btn-primary" href="#books">Browse the books</a>
+        <a class="btn btn-primary" href="#books">Meet our first book</a>
         <a class="btn btn-ghost" href="#submissions">Send us your work</a>
       </div>
     </div>
@@ -47,12 +43,12 @@
 
   <section id="books">
     <div class="wrap">
-      <p class="kicker">The Catalog</p>
+      <p class="kicker">Now Serving</p>
       <h2>Fresh from the griddle</h2>
-      <p class="lede">Every title is a small-batch edition — short enough to finish with your coffee, made with more care than is strictly reasonable.</p>
+      <p class="lede">Our debut title — a small-batch first edition, printed, folded, and sewn by hand.</p>
 
-      <div class="shelf">
-        <a class="book" href="#">
+      <div class="feature">
+        <div class="book">
           <div class="cover c-yolk">
             <span class="press-mark">GBP · No. 1</span>
             <div>
@@ -60,53 +56,20 @@
               <div class="cover-author">A. Toastworthy</div>
             </div>
           </div>
-          <div class="book-meta">
-            <div class="t">Marmalade Days</div>
-            <div class="d">Poems · 32 pages · hand-sewn</div>
-          </div>
-        </a>
-
-        <a class="book" href="#">
-          <div class="cover c-jam">
-            <span class="press-mark">GBP · No. 2</span>
-            <div>
-              <div class="cover-title">The Soft-Boiled Hours</div>
-              <div class="cover-author">June Rye</div>
-            </div>
-          </div>
-          <div class="book-meta">
-            <div class="t">The Soft-Boiled Hours</div>
-            <div class="d">Essays · 48 pages · saddle-stitched</div>
-          </div>
-        </a>
-
-        <a class="book" href="#">
-          <div class="cover c-leaf">
-            <span class="press-mark">GBP · No. 3</span>
-            <div>
-              <div class="cover-title">Field Notes on Toast</div>
-              <div class="cover-author">Basil Crumb</div>
-            </div>
-          </div>
-          <div class="book-meta">
-            <div class="t">Field Notes on Toast</div>
-            <div class="d">Micro-essays · 24 pages · zine</div>
-          </div>
-        </a>
-
-        <a class="book" href="#">
-          <div class="cover c-sky">
-            <span class="press-mark">GBP · No. 4</span>
-            <div>
-              <div class="cover-title">Before the Kettle Sings</div>
-              <div class="cover-author">M. Percolata</div>
-            </div>
-          </div>
-          <div class="book-meta">
-            <div class="t">Before the Kettle Sings</div>
-            <div class="d">Stories · 56 pages · forthcoming</div>
-          </div>
-        </a>
+        </div>
+        <div class="feature-info">
+          <h3>Marmalade Days</h3>
+          <p class="by">Poems by A. Toastworthy</p>
+          <p>Thirty-two pages of small, bright poems about slow mornings, sticky fingers, and the stubborn optimism of starting the day anyway. Finish it before your coffee goes cold; keep it on the shelf much longer.</p>
+          <ul class="feature-specs">
+            <li>Poetry chapbook</li>
+            <li>32 pages</li>
+            <li>Hand-sewn binding</li>
+            <li>Edition of 75, numbered</li>
+          </ul>
+          <a class="btn btn-primary" href="mailto:contact@gloriousbreakfastpress.com?subject=Order%3A%20Marmalade%20Days">Order a copy — $12</a>
+          <p class="edition-note">Ordering is by email while our web shop finishes waking up.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -172,11 +135,7 @@
 <footer>
   <div class="wrap foot-grid">
     <div>© 2026 Glorious Breakfast Press</div>
-    <div>
-      <a href="mailto:contact@gloriousbreakfastpress.com">Email</a> ·
-      <a href="#" rel="me">Instagram</a> ·
-      <a href="#" rel="me">Bluesky</a>
-    </div>
+      <a href="mailto:contact@gloriousbreakfastpress.com">Email</a>
   </div>
 </footer>
 

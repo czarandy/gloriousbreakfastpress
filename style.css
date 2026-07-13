@@ -72,9 +72,11 @@
     background:
       radial-gradient(ellipse 60% 50% at 50% 0%, var(--paper-deep), transparent);
   }
-  .hero .plate {
-    font-size: 3rem;
-    margin-bottom: 18px;
+  .hero .plate { margin-bottom: 22px; }
+  .hero .plate img {
+    max-width: 180px;
+    height: auto;
+    filter: drop-shadow(0 8px 16px rgba(46,36,24,.18));
   }
   .hero h1 {
     font-size: clamp(2.4rem, 6vw, 4rem);
@@ -121,12 +123,13 @@
   section h2 { font-size: 2rem; margin-bottom: 14px; }
   .lede { color: var(--ink-soft); max-width: 40em; }
 
-  /* ---------- books ---------- */
-  .shelf {
-    margin-top: 44px;
+  /* ---------- featured book ---------- */
+  .feature {
+    margin-top: 48px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 36px 28px;
+    grid-template-columns: 280px 1fr;
+    gap: 56px;
+    align-items: center;
   }
   .book { text-decoration: none; color: inherit; display: block; }
   .cover {
@@ -153,7 +156,7 @@
   .cover .press-mark { font-size: 0.68rem; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
   .cover .cover-title {
     font-family: "Fraunces", Georgia, serif;
-    font-size: 1.35rem;
+    font-size: 1.75rem;
     font-weight: 600;
     line-height: 1.2;
   }
@@ -164,9 +167,27 @@
   .c-sky { background: linear-gradient(160deg, #5d84a0, var(--sky) 55%, #345268); }
   .c-marm { background: linear-gradient(160deg, #e07a42, var(--marmalade) 55%, #a8481c); }
   .c-ink { background: linear-gradient(160deg, #4a3d2c, var(--ink) 55%, #1a140c); }
-  .book-meta { margin-top: 14px; }
-  .book-meta .t { font-weight: 600; font-size: 0.98rem; }
-  .book-meta .d { font-size: 0.86rem; color: var(--ink-soft); margin-top: 3px; }
+  .feature-info h3 { font-size: 1.9rem; }
+  .feature-info .by { color: var(--ink-soft); font-size: 1.05rem; margin: 6px 0 18px; }
+  .feature-specs {
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 28px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .feature-specs li {
+    background: var(--paper-deep);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 4px 14px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+  }
+  .feature-info .btn { margin-left: 0; }
+  .edition-note { font-size: 0.84rem; color: var(--ink-soft); margin-top: 14px; }
 
   /* ---------- about ---------- */
   .about-grid {
@@ -274,6 +295,8 @@
 
   @media (max-width: 720px) {
     .about-grid { grid-template-columns: 1fr; }
+    .feature { grid-template-columns: 1fr; gap: 36px; }
+    .feature .book { max-width: 240px; }
     section { padding: 56px 0; }
     .hero { padding: 60px 0 52px; }
     nav a { margin-left: 0; margin-right: 18px; }
